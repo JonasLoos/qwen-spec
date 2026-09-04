@@ -1,0 +1,25 @@
+[project]
+name = "qwen-spec"
+version = "0.1.0"
+description = "Tree speculative decoding for Qwen3.5/3.6/3.8 hybrid models on Apple Silicon (MLX): 3-6x faster decoding, same output distribution"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.13"
+authors = [{ name = "Jonas Loos" }]
+dependencies = [
+    "mlx==0.32.1",
+    "mlx-lm==0.31.3",
+    "numpy>=2",
+    "huggingface-hub>=0.30",
+]
+
+[project.scripts]
+qwen-spec = "qwen_spec.cli:main"
+qwen-spec-server = "qwen_spec.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["qwen_spec"]
